@@ -1,0 +1,11 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.5.1",
+    "libraryName": "full-bleed-web-part-tutorial",
+    "libraryId": "75696b18-2778-4f29-94d8-be5042b0e6bb",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}

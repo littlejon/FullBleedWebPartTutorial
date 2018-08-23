@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "full-bleed-web-part-tutorial-client-side-solution",
+    "id": "75696b18-2778-4f29-94d8-be5042b0e6bb",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true
+  },
+  "paths": {
+    "zippedPackage": "solution/full-bleed-web-part-tutorial.sppkg"
+  }
+}

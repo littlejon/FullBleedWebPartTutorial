@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "full-bleed-web-part-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/fullBleedWebPart/FullBleedWebPartWebPart.js",
+          "manifest": "./src/webparts/fullBleedWebPart/FullBleedWebPartWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "FullBleedWebPartWebPartStrings": "lib/webparts/fullBleedWebPart/loc/{locale}.js"
+  }
+}
