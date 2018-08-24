@@ -1,4 +1,4 @@
-## Full Bleed WebPart Tutorial
+## SPFX Full Bleed WebPart Tutorial
 
 Really quick and simple hack to have a WebPart run Full Bleed (ie use all available space) within a Modern SharePoint Page.
 
