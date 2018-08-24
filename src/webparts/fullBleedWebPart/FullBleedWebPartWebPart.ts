@@ -2,18 +2,36 @@ import { Version } from '@microsoft/sp-core-library';
 import {
   BaseClientSideWebPart,
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneToggle
 } from '@microsoft/sp-webpart-base';
-import { escape } from '@microsoft/sp-lodash-subset';
-
+import * as jQuery from "jquery";
 import styles from './FullBleedWebPartWebPart.module.scss';
 import * as strings from 'FullBleedWebPartWebPartStrings';
 
 export interface IFullBleedWebPartWebPartProps {
-  description: string;
+  fullBleed: boolean;
 }
 
 export default class FullBleedWebPartWebPart extends BaseClientSideWebPart<IFullBleedWebPartWebPartProps> {
+  constructor() {
+    super();
+
+  }
+
+  public onInit(): Promise<void> {
+    return super.onInit().then(_ => {
+        // Full bleed hack
+        if (this.properties.fullBleed) {
+          jQuery("#workbenchPageContent").prop("style", "max-width: none");
+          jQuery(".SPCanvas-canvas").prop("style", "max-width: none");
+          jQuery(".CanvasZone").prop("style", "max-width: none");
+      } else {
+          jQuery("#workbenchPageContent").removeProp("style");
+          jQuery(".SPCanvas-canvas").removeProp("style");
+          jQuery(".CanvasZone").removeProp("style");
+      }
+    });
+  }
 
   public render(): void {
     this.domElement.innerHTML = `
@@ -23,7 +41,7 @@ export default class FullBleedWebPartWebPart extends BaseClientSideWebPart<IFull
             <div class="${ styles.column }">
               <span class="${ styles.title }">Welcome to SharePoint!</span>
               <p class="${ styles.subTitle }">Customize SharePoint experiences using Web Parts.</p>
-              <p class="${ styles.description }">${escape(this.properties.description)}</p>
+              <p class="${ styles.description }">Running Full Bleed: ${this.properties.fullBleed}</p>
               <a href="https://aka.ms/spfx" class="${ styles.button }">
                 <span class="${ styles.label }">Learn more</span>
               </a>
@@ -48,8 +66,8 @@ export default class FullBleedWebPartWebPart extends BaseClientSideWebPart<IFull
             {
               groupName: strings.BasicGroupName,
               groupFields: [
-                PropertyPaneTextField('description', {
-                  label: strings.DescriptionFieldLabel
+                PropertyPaneToggle('fullBleed', {
+                  label: strings.FullBleedFieldLabel
                 })
               ]
             }

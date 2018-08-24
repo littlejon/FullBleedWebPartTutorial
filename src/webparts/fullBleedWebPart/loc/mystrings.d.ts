@@ -1,7 +1,7 @@
 declare interface IFullBleedWebPartWebPartStrings {
   PropertyPaneDescription: string;
   BasicGroupName: string;
-  DescriptionFieldLabel: string;
+  FullBleedFieldLabel: string;
 }
 
 declare module 'FullBleedWebPartWebPartStrings' {

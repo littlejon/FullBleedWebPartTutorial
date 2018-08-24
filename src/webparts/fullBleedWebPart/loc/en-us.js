@@ -1,7 +1,7 @@
 define([], function() {
   return {
-    "PropertyPaneDescription": "Description",
-    "BasicGroupName": "Group Name",
-    "DescriptionFieldLabel": "Description Field"
+    "PropertyPaneDescription": "Settings for the Full Bleed Web Part Tutorial",
+    "BasicGroupName": "Properties",
+    "FullBleedFieldLabel": "Full Bleed"
   }
 });

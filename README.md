@@ -1,26 +1,44 @@
-## full-bleed-web-part-tutorial
+## Full Bleed WebPart Tutorial
 
-This is where you include your WebPart documentation.
+Really quick and simple hack to have a WebPart run Full Bleed (ie use all available space) within a Modern SharePoint Page.
 
-### Building the code
+I would suggest if you are going to use this in your own WebParts that you test thoroughly in your own environment, it is best suited for pages where you only want a single WebPart.
+
+I have used jQuery to make life easier, although it should be fairly straightforward to do without needing to pull in a new project dependency.
+
+It also goes without saying that this configuration is not supported by Microsoft at all. Use at your own risk.
+
+### Instructions ###
 
 ```bash
-git clone the repo
-npm i
-npm i -g gulp
-gulp
+git clone https://github.com/littlejon/FullBleedWebPartTutorial.git
+npm install
+gulp serve
 ```
 
-This package produces the following:
+### The Code ###
 
-* lib/* - intermediate-stage commonjs build artifacts
-* dist/* - the bundled script, along with other resources
-* deploy/* - all resources which should be uploaded to a CDN.
+To test in your own WebPart. You will need jQuery installed the following to work
 
-### Build options
+```bash
+npm install jquery @types/jquery
+```
 
-gulp clean - TODO
-gulp test - TODO
-gulp serve - TODO
-gulp bundle - TODO
-gulp package-solution - TODO
+Add include in your `.ts` or `.tsx` file
+
+```javascript
+import * as jQuery from "jquery";
+```
+
+Simply add the following lines in the WebPart initialisation.
+
+```javascript
+public onInit(): Promise<void> {
+    return super.onInit().then(_ => {
+        jQuery("#workbenchPageContent").prop("style", "max-width: none");
+        jQuery(".SPCanvas-canvas").prop("style", "max-width: none");
+        jQuery(".CanvasZone").prop("style", "max-width: none");
+    });
+}
+```
+
